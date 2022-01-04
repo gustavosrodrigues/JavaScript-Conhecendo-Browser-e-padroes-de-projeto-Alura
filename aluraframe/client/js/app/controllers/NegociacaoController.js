@@ -21,19 +21,15 @@ class NegociacaoController {
         let data = new Date(... // o spread (...) coloca cada item separado em um paramêtro do Date
             this._data.value
                 .split('-')
-                .map(function(item, indice) {
-                    return item - indice % 2 // convenientemente, somente o indice do mês retorna resto = 1
-                })
+                .map((item, indice) => item - indice % 2) // convenientemente, somente o indice do mês retorna resto = 1                
         )
-        
-        console.log(data);
 
-        /* let negociacao = new Negociacao(
-            this._data.value, this._valor.value, this._quantidade.value
+        let negociacao = new Negociacao(
+            data,
+            this._valor.value,
+            this._quantidade.value
         );
-
-        console.log(this._data.value);
-        console.log(this._valor.value);
-        console.log(this._quantidade.value); */
+        
+        console.log(negociacao);
     }
 }
