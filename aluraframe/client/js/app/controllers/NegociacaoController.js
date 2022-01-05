@@ -11,11 +11,8 @@ class NegociacaoController {
     adiciona(event) {
         event.preventDefault();   
 
-        let data = new Date(... // o spread (...) coloca cada item separado em um paramêtro do Date
-            this._inputData.value
-                .split('-')
-                .map((item, indice) => item - indice % 2) // convenientemente, somente o indice do mês retorna resto = 1                
-        );
+        let helper = new DateHelper();
+        let data = helper.textoParaData(this._inputData.value);
 
         let negociacao = new Negociacao(
             data,
@@ -23,7 +20,9 @@ class NegociacaoController {
             this._inputValor.value            
         );
 
-        let dataCompleta = `${negociacao.data.getDate()}/${data.getMonth() + 1}/${data.getFullYear()}`;
+        console.log(negociacao);
+
+        let dataCompleta = helper.dataParaTexto(negociacao.data);
         console.log(dataCompleta);        
     }
 }
